@@ -1,0 +1,6 @@
+<% @shop = Shop.find(params[:shop_id]) %>
+<h1> New Shelf for: <%= @shop.name %> </h1>
+
+<%= render 'form', shelf: @shelf , shop: @shop %>
+
+<%= link_to 'Back', shop_path(@shop) %>

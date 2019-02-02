@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<% @shop = Shop.find(@shelf.shop_id) %>
+<h1>Shop Name: <%=@shop.name%> </h1>
+<h1> Shelf ID: <%= @shelf.id %> </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Candy ID </th>
+      <th> Candy Name </th>
+      <th> Quantity </th>
+      <th> Add One </th>
+      <th> Remove One </th>
+      <th> Remove All </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	
+    <% Stock.where(shelf_id: @shelf.id).each do |relation| %> 
+      <tr>
+          <%if relation.candy != nil %>
+        <td><%= relation.candy.id %>  </td>
+        <td><%= relation.candy.name %></td>
+        <td> <%= relation.quantity %> </td>
+        <td><%= link_to 'Add One', add_one_candy_url(@shelf,candy_id: relation.candy.id), method: :patch, data: { confirm: 'Are you sure?'} %></td>
+        <td><%= link_to 'Remove One', remove_one_candy_url(@shelf,candy_id: relation.candy.id), method: :patch, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Remove All', remove_all_candy_url(@shelf,candy_id: relation.candy.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', shop_path(@shop) %>

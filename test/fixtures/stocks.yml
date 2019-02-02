@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candy: one
+  shelf: one
+  quantity: 1
+
+two:
+  candy: two
+  shelf: two
+  quantity: 1

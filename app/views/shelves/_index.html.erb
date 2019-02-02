@@ -1,0 +1,28 @@
+
+
+<h1>Shelves</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Shelf ID </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shelves.each do |shelf| %>
+      <tr>
+        <td><%= shelf.id %>  </td>
+        <td><%= link_to 'Show', shelf_path(id: shelf.id , shop_id: @shop.id) %></td>
+        
+        <td><%= link_to 'Destroy', shelf_path(id: shelf.id ,shop_id: @shop.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shelf', new_shelf_path(:shop_id => shop.id) %>
+<br>

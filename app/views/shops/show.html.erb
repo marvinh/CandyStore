@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <strong>Shop Name: </strong>
+  <%= @shop.name %>
+</h1>
+
+<%= render 'candies/index', shop: @shop %>
+
+<%= render 'shelves/index', shop: @shop %>
+
+<br>
+
+<%= render 'stocks/new', shop: @shop %>
+
+<br>
+<br>
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>

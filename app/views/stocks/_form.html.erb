@@ -1,0 +1,41 @@
+<%= form_with(model: shop, url: add_to_stock_path , local: true) do |form| %>
+  <% if shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shop.errors.count, "error") %> prohibited this candy from being saved:</h2>
+
+      <ul>
+      <% shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= form.label :shelf_id %>
+    <% shelf_array = [] %>
+    <% shop.shelves.each do |shelf| %>
+      <% shelf_array.push(shelf.id) %>
+    <% end %>
+    <%= form.select(:shelf_id, options_for_select(shelf_array)) %>
+  </div>
+
+   <div class="field">
+    <%= form.label :candy_id %>
+    <% candy_array = [] %>
+    <% shop.candies.each do |candy| %>
+      <% candy_array.push([candy.name, candy.id ]) %>
+    <% end %>
+    <%= form.select(:candy_id, options_for_select(candy_array)) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field(:quantity, method: :patch, value: 1,min: 1) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

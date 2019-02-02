@@ -1,0 +1,6 @@
+
+<h1> New Candy for: <%= @shop.name %> </h1>
+
+<%= render 'form', candy: @candy , shop: @shop %>
+
+<%= link_to 'Back', shop_path(@shop) %>

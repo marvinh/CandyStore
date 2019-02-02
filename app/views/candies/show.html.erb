@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<% @shop = Shop.find(@candy.shop_id) %>
+<p>
+	<strong>Shop Name: </strong>
+		<%= @shop.name %> 
+		<br>
+  <strong>Candy Name:</strong>
+  	<%= @candy.name %>
+</p>
+
+<%= link_to 'Edit', edit_candy_path(@candy) %> |
+<%= link_to 'Back', shop_path(@shop) %>

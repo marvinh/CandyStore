@@ -1,0 +1,11 @@
+
+<% @shop = Shop.find(@candy.shop_id) %>
+<p>
+	<strong>Shop Name: </strong>
+		<%= @shop.name %> 
+		<br>
+</p>
+<%= render 'form', candy: @candy , shop: @shop %>
+
+<%= link_to 'Show', @candy %> |
+<%= link_to 'Back', shop_path(@shop) %>
